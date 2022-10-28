@@ -1,43 +1,51 @@
 html {
-    background-color: rgb(246, 246, 246);
-    font-size: 35px;
+    font-size: calc(3vw + 3vh);
 }
 
-body {
+#main {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
     text-align: center;
-    text-align-last: center;
-    margin: 0 100px;
 }
 
-#select {
-    width: max-content;
+#message {
+    position: fixed;
+    bottom: 1vh;
+    font-size: calc(2vw + 2vh);
+}
+
+input {
+    text-align: unset;
+}
+
+#container {
     margin-bottom: 0.5rem;
-}
-
-#example {
-    font-size: 0.8rem;
+    font-size: calc(1.5vw + 1.5vh);
 }
 
 #title {
-    font-size: 1.5rem;
     font-weight: bold;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
     border-bottom: 3px solid black;
 }
 
-#fileInput {
-    font-size: 0.7rem;
-    padding: 15px 10px;
-    border: dashed 3px rgb(43, 43, 43);
-    background-color: rgb(231, 231, 231);
-    border-radius: 99px;
+#inputLabelHolder {
+    font-size: calc(1.5vw + 1.5vh);
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+#inputLabel {
+    width: 100%;
+    margin: 0;
 }
 
 #result {
@@ -54,4 +62,14 @@ body {
 
 .hidden {
     visibility: hidden;
+}
+
+.disabled {
+    display: none;
+}
+
+.colored {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg,#2ca2b4,#5598de 24%,#7f87ff 45%,#f65aad 76%,#ec3d43);
 }

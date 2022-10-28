@@ -28,6 +28,7 @@ function handleFile(f) {
 
 function generateNewFile(f) {
     return new Promise((res, rej) => {
+        // todo support rest files
         const XML = f.folder("ppt").file("presentation.xml");
         if (XML) {
             XML.async('string').then((data)=> {
@@ -94,6 +95,7 @@ function handeFileError() {
 };
 
 function onError(message) {
+    downloadText.classList.add('hidden');
     result.classList.remove('hidden');
     result.innerText = message;
 };
