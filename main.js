@@ -5,10 +5,12 @@ const zip = new JSZip();
 let result;
 let fileInput;
 let fileName;
+let downloadText;
 
 window.onload = function() {
     result = $('#result');
     fileInput = $('#fileInput');
+    downloadText = $('#download');
     fileInput.onchange = () => {
         const file = fileInput.files[0];
         fileName = file.name;
@@ -59,21 +61,32 @@ function replaceFile(f, newContent) {
 };
 
 function download() {
-    zip.generateAsync({type:"blob"}).then((newFile)=> saveAs(newFile, fileName));
-    cleanup();
+    try {
+        downloadText.classList.remove('hidden');
+        downloadText.onclick = function() {
+            zip.generateAsync({type:"blob"}).then((newFile)=> saveAs(newFile, 'OfficerBreaker ' + fileName));
+            cleanup();
+        };
+    } catch(e) {
+        console.log(e);
+        return ('There was an error while trying to create the downloadable file.')
+    }; 
 };
 
 /* helper */
 
 function cleanup() {
     fileInput.value = "";
+    downloadText.innerText = "Download again";
 };
 
 
 function handleFileSuccess() {
     // todo remove loading spinner
     result.classList.add('hidden');
-    result.innerText = "";
+    result.innerText = "placeholder";
+    downloadText.classList.add('hidden');
+    downloadText.innerText = "Download File";
 };
 
 function handeFileError() {

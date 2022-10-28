@@ -17,6 +17,7 @@ body {
 
 #select {
     width: max-content;
+    margin-bottom: 0.5rem;
 }
 
 #example {
@@ -33,9 +34,24 @@ body {
 
 #fileInput {
     font-size: 0.7rem;
-    padding-top: 1rem;
+    padding: 15px 10px;
+    border: dashed 3px rgb(43, 43, 43);
+    background-color: rgb(231, 231, 231);
+    border-radius: 99px;
+}
+
+#result {
+    margin-top: 5px;
+    color: red;
+}
+
+#download {
+    margin-top: 10px;
+    color: green;
+    user-select: none;
+    cursor: pointer;
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
 }
