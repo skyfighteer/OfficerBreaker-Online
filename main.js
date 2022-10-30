@@ -23,7 +23,7 @@ window.onload = function() {
 function handleFile(f) {
     handleFileSuccess();
     generateNewFile(f).then(download)
-    .catch((e) => onError(e));  
+    .catch(e => onError(e));  
 };
 
 function generateNewFile(f) {
@@ -47,8 +47,7 @@ function removeProtection(data) {
         const regex = /<p:modifyVerifier.*\/>/;
         return data.replace(regex, '');
     } catch(e) {
-        console.log(e);
-        return ('Could not remove protection.');
+        throw new Error('There was an error while trying to remove protection.', e);
     }
 };
 
@@ -56,8 +55,7 @@ function replaceFile(f, newContent) {
     try {
         f.folder("ppt").file("presentation.xml", newContent);
     } catch(e) {
-        console.log(e);
-        return ('There was an error while trying to replace the file.');
+        throw new Error('There was an error while trying to replace the file.', e);
     };
 };
 
@@ -69,8 +67,7 @@ function download() {
             cleanup();
         };
     } catch(e) {
-        console.log(e);
-        return ('There was an error while trying to create the downloadable file.')
+        throw new Error('There was an error while trying to create the downloadable file', e);
     }; 
 };
 
